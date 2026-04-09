@@ -6,7 +6,7 @@ Build a **public demonstration repo** for Microsoft Fabric Business Continuity &
 
 ### Design Philosophy
 - **Native-first**: Maximize use of Fabric Git integration, OneLake DR replication, REST APIs, and platform features.
-- **Reuse-first**: Adopt and improve existing accelerators from `microsoft/fabric-toolbox` rather than building from scratch.
+- **Reuse-first**: Adopt and improve existing accelerators from `prwani/fabric-toolbox` rather than building from scratch.
 - **Additive only**: Write custom code ONLY where native + existing accelerators have gaps.
 
 ---
@@ -23,7 +23,7 @@ Build a **public demonstration repo** for Microsoft Fabric Business Continuity &
 
 #### fabric-toolbox Full Inventory (BCDR-relevant)
 
-The `microsoft/fabric-toolbox` repo contains **multiple accelerators and tools** relevant to BCDR — not just the main BCDR folder:
+The `prwani/fabric-toolbox` repo contains **multiple accelerators and tools** relevant to BCDR — not just the main BCDR folder:
 
 | Accelerator/Tool | Path | What It Does | Relevance |
 |-----------------|------|-------------|-----------|

@@ -12,6 +12,7 @@ Non-paired-region demo flow
 1. Step 0: prepare the primary environment and schedule cross-region backups
    - docs: ${ROOT_DIR}/docs/nonpaired-region-guide.md
    - bootstrap: ${ROOT_DIR}/e2e-demo/run-primary-setup.sh
+   - toolbox capture: ${ROOT_DIR}/step0-primary-setup/scripts/run-toolbox-primary-capture.sh
 
 2. Step 1: provision the DR capacity
    - script: ${ROOT_DIR}/step1-provision-dr-capacity/scripts/provision-capacity.sh
@@ -23,11 +24,14 @@ Non-paired-region demo flow
    - docs: ${ROOT_DIR}/step3-copy-data/nonpaired/README.md
 
 5. Step 4: restore full function and validate
-   - docs: ${ROOT_DIR}/step4-restore-full-function/README.md
+   - validator: ${ROOT_DIR}/step4-restore-full-function/validation/validate-recovery.sh
 
 Commands:
   $(basename "$0") primary-setup [bootstrap args...]
+  $(basename "$0") capture-primary [wrapper args...]
   $(basename "$0") provision-dr [provision args...]
+  $(basename "$0") warehouse-recovery [wrapper args...]
+  $(basename "$0") validate [validation args...]
 EOF
 }
 
@@ -36,9 +40,21 @@ case "${1:-}" in
     shift
     exec "${ROOT_DIR}/e2e-demo/run-primary-setup.sh" "$@"
     ;;
+  capture-primary)
+    shift
+    exec "${ROOT_DIR}/step0-primary-setup/scripts/run-toolbox-primary-capture.sh" "$@"
+    ;;
   provision-dr)
     shift
     exec "${ROOT_DIR}/step1-provision-dr-capacity/scripts/provision-capacity.sh" "$@"
+    ;;
+  warehouse-recovery)
+    shift
+    exec "${ROOT_DIR}/step3-copy-data/nonpaired/scripts/run-toolbox-warehouse-recovery.sh" "$@"
+    ;;
+  validate)
+    shift
+    exec "${ROOT_DIR}/step4-restore-full-function/validation/validate-recovery.sh" "$@"
     ;;
   ""|-h|--help|help)
     usage

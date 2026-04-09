@@ -6,7 +6,7 @@ This repository builds on public Microsoft Fabric guidance and open-source accel
 
 | Source | Usage in this repo |
 |--------|--------------------|
-| [`microsoft/fabric-toolbox`](https://github.com/microsoft/fabric-toolbox) | Core upstream accelerators for paired-region BCDR, warehouse recovery, lakehouse mirroring, and warehouse-to-lakehouse copy |
+| [`prwani/fabric-toolbox`](https://github.com/prwani/fabric-toolbox) | Active toolbox fork referenced by this repo for paired-region BCDR, warehouse recovery, lakehouse mirroring, and warehouse-to-lakehouse copy |
 | [Microsoft Learn: Experience-specific guidance](https://learn.microsoft.com/en-us/fabric/security/experience-specific-guidance) | Recovery model, capability boundaries, and manual post-recovery guidance |
 | [Microsoft Learn: OneLake disaster recovery](https://learn.microsoft.com/en-us/fabric/onelake/onelake-disaster-recovery) | Paired-region replication and failover concepts |
 | [Azure template reference: `Microsoft.Fabric/capacities`](https://learn.microsoft.com/en-us/azure/templates/microsoft.fabric/2023-11-01/capacities) | Source for the Fabric capacity Bicep resource implemented in this repo |

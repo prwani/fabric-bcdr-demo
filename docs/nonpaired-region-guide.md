@@ -24,14 +24,15 @@ Recover supported Fabric items from Git and restore data from a **pre-disaster s
 
 4. **Restore data from storage**
    - Follow [step3-copy-data/nonpaired](../step3-copy-data/nonpaired/README.md).
-   - The planned restore path uses storage-based exports captured before the disaster.
+   - Use the repo-owned restore notebook against the storage-based exports captured before the disaster.
+   - For warehouse recovery after the storage restore, use `step3-copy-data/nonpaired/scripts/run-toolbox-warehouse-recovery.sh`.
 
 5. **Restore full function**
    - Follow [step4-restore-full-function](../step4-restore-full-function/README.md).
 
 ## Critical constraint
 
-Non-paired-region recovery only works if the repo's future backup process has already exported the required data to a secondary region. There is no native OneLake DR replica to fall back to.
+Non-paired-region recovery only works if the repo's scheduled backup process has already exported the required data to a secondary region. There is no native OneLake DR replica to fall back to.
 
 ## Suggested backup shape
 

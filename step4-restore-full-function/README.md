@@ -18,7 +18,7 @@ Once the new workspace and data are in place, the recovered environment still ne
 
 ## What this repo adds
 
-- validation guidance and future validation assets
+- validation CLI, notebook, and warehouse SQL assets
 - step-level documentation that ties the different upstream components together
 
 ## References

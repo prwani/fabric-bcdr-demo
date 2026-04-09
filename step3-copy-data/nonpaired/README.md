@@ -20,7 +20,7 @@ This folder now contains the repo-owned notebooks for the recovery path Fabric d
 
 ## Current warehouse handling
 
-The non-paired notebooks handle the **lakehouse backup/restore path** directly. Warehouse data is expected to be exported to a staging location and then ingested into the DR warehouse separately, using the same warehouse-recovery concepts documented elsewhere in this repo.
+The non-paired notebooks handle the **lakehouse backup/restore path** directly. For warehouse recovery, use `scripts/run-toolbox-warehouse-recovery.sh` to reference the forked toolbox recovery helpers after the storage-backed export has been restored into a staging lakehouse.
 
 ## Expected backup contract
 

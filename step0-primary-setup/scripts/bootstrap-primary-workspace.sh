@@ -540,7 +540,7 @@ print_summary() {
       },
       nextSteps: [
         "Run step0-primary-setup/sql/seed-warehouse.sql in the Fabric warehouse SQL editor or another TDS client.",
-        "Run fabric-toolbox/accelerators/BCDR/01 - Run In Primary.ipynb after the sample environment is ready."
+        "Run step0-primary-setup/scripts/run-toolbox-primary-capture.sh after the sample environment is ready."
       ]
     }'
 }

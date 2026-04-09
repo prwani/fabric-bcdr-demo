@@ -14,7 +14,7 @@
 | Notebook / semantic model / report rebinding | Partial APIs and libraries | BCDR DR notebook | Reference docs and validation plan |
 | Non-paired-region backup | **No** | Optional inspiration only | **Implemented** with storage-copy backup notebook and manifest |
 | Non-paired-region restore | **No** | Optional inspiration only | **Implemented** with manifest-driven restore notebook |
-| End-to-end validation | **No** | Partial | **Planned validation assets** |
+| End-to-end validation | **No** | Partial | **Implemented** with CLI, notebook, and warehouse SQL validation assets |
 
 ## Decision rule
 

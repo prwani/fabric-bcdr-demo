@@ -24,7 +24,8 @@ The current repo assets assume:
 Optional but useful:
 
 - `sqlcmd`, Azure Data Studio, SSMS, or another TDS-capable SQL client for warehouse seed and validation scripts
-- A notebook-capable Fabric environment for running the upstream and future custom notebooks
+- A notebook-capable Fabric environment for running the upstream and repo-owned custom notebooks
+- A local clone of `https://github.com/prwani/fabric-toolbox` if you want to launch the referenced upstream notebooks and scripts from disk
 
 ## Azure setup
 

@@ -11,6 +11,9 @@ This folder now contains the primary bootstrap entrypoint for the demo environme
   - uploads the sample-data notebook
   - optionally runs the notebook
   - optionally connects the workspace to Git and commits the workspace state
+- `run-toolbox-primary-capture.sh`
+  - verifies the local toolbox fork paths if requested
+  - prints the exact `prwani/fabric-toolbox` notebook and script references to run after the primary workspace is ready
 
 ## Upstream dependencies
 

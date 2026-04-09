@@ -1,6 +1,6 @@
 # `fabric-toolbox` inventory used by this repo
 
-The repo depends on the following upstream assets from [`microsoft/fabric-toolbox`](https://github.com/microsoft/fabric-toolbox).
+The repo depends on the following upstream assets from [`prwani/fabric-toolbox`](https://github.com/prwani/fabric-toolbox).
 
 ## Core BCDR accelerator
 
@@ -29,6 +29,6 @@ The repo depends on the following upstream assets from [`microsoft/fabric-toolbo
 
 ## Notes
 
-- This repo references upstream paths directly instead of vendoring the toolbox into this repository.
+- This repo references the forked toolbox paths directly instead of vendoring the toolbox into this repository.
 - The toolbox remains the authoritative source for its notebooks and scripts.
 - The BCDR accelerator focuses on backup and recovery orchestration; the sample-data seeding pattern used in this repo comes from `multi-region-nonpaired-enterprise-prototype`, not from `accelerators/BCDR/`.

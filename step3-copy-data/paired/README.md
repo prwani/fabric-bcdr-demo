@@ -24,3 +24,7 @@ The source for the copy step is the **replicated data now available in the paire
 ## References
 
 See [reference/README.md](reference/README.md).
+
+## Wrapper
+
+Use `scripts/run-toolbox-step3.sh` to verify the local toolbox fork paths and print the exact notebook and SQL references for this step.

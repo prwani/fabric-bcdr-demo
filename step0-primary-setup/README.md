@@ -7,6 +7,7 @@ This step creates the **source environment** that the BCDR demo later protects a
 - `scripts/bootstrap-primary-workspace.sh` creates the primary workspace, assigns it to the Fabric capacity, creates sample artifacts, optionally connects the workspace to Git, and optionally runs the sample-data notebook.
 - `notebooks/seed-sample-data.ipynb` seeds synthetic sample data into the primary **lakehouse**.
 - `sql/seed-warehouse.sql` seeds synthetic sample data into the primary **warehouse**.
+- `scripts/run-toolbox-primary-capture.sh` points you at the forked toolbox assets used immediately after primary setup.
 
 ## How the primary environment is populated
 
@@ -31,7 +32,7 @@ After the primary capacity exists, the repo uses this split:
 
 ## Upstream seeding examples checked
 
-- **`fabric-toolbox`**: I did **not** find a BCDR-specific sample-data seeding asset in `accelerators/BCDR/`.
+- **`prwani/fabric-toolbox`**: I did **not** find a BCDR-specific sample-data seeding asset in `accelerators/BCDR/`.
 - **`multi-region-nonpaired-enterprise-prototype`**: I did find a reusable Fabric seeding pattern:
   - `step1-primary-baseline/scripts/setup-fabric-healthcare.sh`
   - `step1-primary-baseline/samples/E-fabric-healthcare/cms_healthcare_demo.ipynb`
@@ -70,5 +71,4 @@ This repo's Step 0 implementation follows that same pattern: create the Fabric i
 - The script resolves the **Fabric capacity UUID** from the capacity display name by calling `GET /v1/capacities`.
 - The lakehouse data path is fully automated.
 - Warehouse data seeding uses the SQL surface because warehouse DDL/DML is executed through T-SQL rather than the core REST item APIs.
-- After the primary environment is populated, run the upstream `fabric-toolbox/accelerators/BCDR/01 - Run In Primary.ipynb` notebook to capture recovery metadata.
-
+- After the primary environment is populated, run `scripts/run-toolbox-primary-capture.sh` and then execute the referenced assets from `prwani/fabric-toolbox`.

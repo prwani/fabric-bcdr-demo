@@ -18,5 +18,5 @@ The implementation pattern follows the Fabric healthcare sample found in:
 
 ## Upstream notebook references
 
-- `fabric-toolbox/accelerators/BCDR/01 - Run In Primary.ipynb`
-- `fabric-toolbox/accelerators/BCDR/workspaceutils.ipynb`
+- `prwani/fabric-toolbox/accelerators/BCDR/01 - Run In Primary.ipynb`
+- `prwani/fabric-toolbox/accelerators/BCDR/workspaceutils.ipynb`

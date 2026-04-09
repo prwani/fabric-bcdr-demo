@@ -22,9 +22,13 @@ Use the PowerShell alternative when you want a more explicit DW-oriented recreat
 ## What this repo adds
 
 - documentation that explains when to use each upstream asset
-- a consistent config model for future wrappers
+- a repo-owned wrapper that points at the forked toolbox assets without copying them here
 - Step 1 capacity provisioning so the upstream flows have a target capacity to use
 
 ## References
 
 See [reference/README.md](reference/README.md).
+
+## Wrapper
+
+Use `scripts/run-toolbox-step2.sh` to verify the local toolbox fork paths and print the exact notebook and script references for this step.

@@ -6,23 +6,23 @@ This repo is intentionally **native-first**:
 
 - Use **Fabric Git integration** to restore supported item definitions.
 - Use **OneLake DR replication** where Fabric already provides paired-region recovery.
-- Use **fabric-toolbox** accelerators as the main recovery engine instead of rewriting them.
+- Use the **`prwani/fabric-toolbox` fork** as the main recovery engine instead of rewriting it here.
 - Add custom assets only where there is a gap: DR capacity provisioning, non-paired backup/restore, validation, and end-to-end demo glue.
 
 See [PLAN.md](PLAN.md) for the full implementation plan that drives this repo.
 
 ## Current implementation status
 
-The repo now contains the initial working foundation:
+The repo now contains the testing-ready implementation set:
 
 - **Step 0 automation** for building the primary workspace, creating sample artifacts, and seeding primary lakehouse data
 - **Step 1 automation** for provisioning a new Microsoft Fabric capacity in the DR region with Bicep + shell.
-- **Config schema** and example config to standardize future scripts and notebooks.
-- **Docs and step guides** that map native Fabric features, `fabric-toolbox`, and new repo assets.
+- **Config schema** and example config to standardize repo scripts and notebooks.
+- **Toolbox reference wrappers** for Step 0, Step 2, and Step 3 so this repo points at `prwani/fabric-toolbox` without copying its assets.
+- **Docs and step guides** that map native Fabric features, the forked toolbox, and new repo assets.
 - **Non-paired backup/restore notebooks** for storage-based recovery flows.
-- **Demo entrypoints** for primary setup and DR walkthroughs.
-
-The remaining implementation work is tracked in `PLAN.md`.
+- **Validation assets** for CLI, notebook, and warehouse SQL smoke checks.
+- **Demo entrypoints** for primary setup, DR walkthroughs, and smoke tests.
 
 ## Recovery model
 
@@ -66,13 +66,13 @@ fabric-bcdr-demo/
 |------|-----------|-----------------|
 | Step 0 | [`step0-primary-setup/`](step0-primary-setup/) | Primary-region setup, DR enablement guidance, metadata collection references |
 | Step 1 | [`step1-provision-dr-capacity/`](step1-provision-dr-capacity/) | New capacity provisioning assets implemented in this repo |
-| Step 2 | [`step2-recreate-workspace-items/`](step2-recreate-workspace-items/) | Git reconnect + item restore references to upstream `fabric-toolbox` |
+| Step 2 | [`step2-recreate-workspace-items/`](step2-recreate-workspace-items/) | Git reconnect + item restore wrappers around the forked toolbox |
 | Step 3 | [`step3-copy-data/`](step3-copy-data/) | Paired-region copy references + non-paired custom design |
-| Step 4 | [`step4-restore-full-function/`](step4-restore-full-function/) | Rebinding, security replay, validation guidance |
+| Step 4 | [`step4-restore-full-function/`](step4-restore-full-function/) | Rebinding, security replay, and implemented validation assets |
 
 ## Upstream dependencies
 
-This repo builds on the following upstream `fabric-toolbox` assets:
+This repo builds on the following upstream assets from [`prwani/fabric-toolbox`](https://github.com/prwani/fabric-toolbox):
 
 - `accelerators/BCDR/01 - Run In Primary.ipynb`
 - `accelerators/BCDR/02 - Run In DR.ipynb`
