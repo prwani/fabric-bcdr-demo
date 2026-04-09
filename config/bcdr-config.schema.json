@@ -1,0 +1,297 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/fabric-bcdr-demo/config/bcdr-config.schema.json",
+  "title": "Fabric BCDR demo configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scenario",
+    "azure",
+    "fabric",
+    "git"
+  ],
+  "properties": {
+    "scenario": {
+      "type": "string",
+      "enum": [
+        "paired",
+        "nonpaired"
+      ]
+    },
+    "azure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subscriptionId",
+        "resourceGroup"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F-]{36}$"
+        },
+        "resourceGroup": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "fabric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capacityAdmins",
+        "primary",
+        "secondary"
+      ],
+      "properties": {
+        "capacityAdmins": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "primary": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fabricLocation"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "artifactNames": {
+                  "$ref": "#/$defs/artifactNames"
+                }
+              }
+            }
+          ]
+        },
+        "secondary": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/fabricLocation"
+            },
+            {
+              "type": "object",
+              "required": [
+                "sku"
+              ],
+              "properties": {
+                "sku": {
+                  "$ref": "#/$defs/fabricSku"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "git": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "repository",
+        "branch"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": [
+            "github",
+            "azure-devops"
+          ]
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri"
+        },
+        "ownerName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "organizationName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projectName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repositoryName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "directory": {
+          "type": "string"
+        },
+        "connectionId": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F-]{36}$"
+        },
+        "customDomainName": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "backup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "storage"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "storage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "subscriptionId",
+            "resourceGroup",
+            "accountName",
+            "containerName",
+            "region"
+          ],
+          "properties": {
+            "subscriptionId": {
+              "type": "string",
+              "pattern": "^[0-9a-fA-F-]{36}$"
+            },
+            "resourceGroup": {
+              "type": "string",
+              "minLength": 1
+            },
+            "accountName": {
+              "type": "string",
+              "pattern": "^[a-z0-9]{3,24}$"
+            },
+            "containerName": {
+              "type": "string",
+              "minLength": 3
+            },
+            "pathPrefix": {
+              "type": "string",
+              "minLength": 1
+            },
+            "region": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "scenario": {
+            "const": "nonpaired"
+          }
+        },
+        "required": [
+          "scenario"
+        ]
+      },
+      "then": {
+        "required": [
+          "backup"
+        ],
+        "properties": {
+          "backup": {
+            "properties": {
+              "enabled": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "fabricLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capacityName",
+        "region",
+        "workspaceName"
+      ],
+      "properties": {
+        "capacityName": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]{2,62}$"
+        },
+        "region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workspaceName": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "artifactNames": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lakehouse",
+        "warehouse",
+        "seedNotebook",
+        "dataPipeline",
+        "sparkJobDefinition"
+      ],
+      "properties": {
+        "lakehouse": {
+          "type": "string",
+          "minLength": 1
+        },
+        "warehouse": {
+          "type": "string",
+          "minLength": 1
+        },
+        "seedNotebook": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dataPipeline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sparkJobDefinition": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "fabricSku": {
+      "type": "string",
+      "enum": [
+        "F2",
+        "F4",
+        "F8",
+        "F16",
+        "F32",
+        "F64",
+        "F128",
+        "F256",
+        "F512",
+        "F1024",
+        "F2048"
+      ]
+    }
+  }
+}

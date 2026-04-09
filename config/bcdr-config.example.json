@@ -1,0 +1,51 @@
+{
+  "$schema": "./bcdr-config.schema.json",
+  "scenario": "paired",
+  "azure": {
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroup": "rg-fabric-bcdr-demo"
+  },
+  "fabric": {
+    "capacityAdmins": [
+      "fabric.admin@contoso.com"
+    ],
+    "primary": {
+      "capacityName": "fabricprimarydemo",
+      "region": "eastus",
+      "workspaceName": "fabric-bcdr-primary",
+      "artifactNames": {
+        "lakehouse": "bcdr_demo_lakehouse",
+        "warehouse": "bcdr_demo_warehouse",
+        "seedNotebook": "bcdr_seed_sample_data",
+        "dataPipeline": "bcdr_demo_pipeline",
+        "sparkJobDefinition": "bcdr_demo_spark_job"
+      }
+    },
+    "secondary": {
+      "capacityName": "fabricdrdemo",
+      "region": "westus2",
+      "workspaceName": "fabric-bcdr-dr",
+      "sku": "F2"
+    }
+  },
+  "git": {
+    "provider": "github",
+    "repository": "https://github.com/contoso/fabric-bcdr-assets",
+    "ownerName": "contoso",
+    "repositoryName": "fabric-bcdr-assets",
+    "connectionId": "00000000-0000-0000-0000-000000000000",
+    "branch": "main",
+    "directory": "fabric/demo"
+  },
+  "backup": {
+    "enabled": false,
+    "storage": {
+      "subscriptionId": "00000000-0000-0000-0000-000000000000",
+      "resourceGroup": "rg-fabric-bcdr-backup",
+      "accountName": "fabricbcdrbackup",
+      "containerName": "fabric-exports",
+      "pathPrefix": "fabric-bcdr-demo",
+      "region": "centralus"
+    }
+  }
+}
